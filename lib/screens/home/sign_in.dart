@@ -3,6 +3,9 @@ import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
+
   @override
   _SignInState createState() => _SignInState();
 }
@@ -22,6 +25,21 @@ class _SignInState extends State<SignIn> {
         slivers: <Widget>[
           MyFlexibleAppBar(
             mText: 'Sign In',
+            action: <Widget>[
+              FlatButton.icon(
+                onPressed: () {
+                  widget.toggleView();
+                },
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                label: Text(
+                  'Register',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -57,22 +75,24 @@ class _SignInState extends State<SignIn> {
                               SizedBox(
                                 height: 140.0,
                               ),
-                              RaisedButton(
-                                onPressed: () async {
-                                  print(email);
-                                  print(password);
-                                },
-                                padding: EdgeInsets.fromLTRB(60, 5, 60, 5),
-                                color: Colors.amber[600],
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Text(
-                                  'Sign In',
-                                  style: TextStyle(
-                                      color: Colors.grey[900],
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                              SizedBox(
+                                width: 200.0,
+                                child: RaisedButton(
+                                  onPressed: () async {
+                                    print(email);
+                                    print(password);
+                                  },
+                                  color: Colors.amber[600],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                        color: Colors.grey[900],
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0),
+                                  ),
                                 ),
                               ),
                             ],
