@@ -10,7 +10,7 @@ class MyFlexibleAppBar extends StatelessWidget {
             fontSize: 16.0, letterSpacing: 2, fontWeight: FontWeight.w300),
       ),
       centerTitle: true,
-      elevation: 4,
+      elevation: 1,
       pinned: true,
       expandedHeight: 230.0,
       flexibleSpace: FlexibleSpaceBar(
