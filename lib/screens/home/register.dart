@@ -11,11 +11,14 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   // text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +56,14 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 20.0, horizontal: 30.0),
                         child: Form(
+                          key: _formKey,
                           child: Column(
                             children: <Widget>[
                               SizedBox(
                                 height: 60.0,
                               ),
                               TextFormField(
+                                validator: (val) => val.isEmpty ? 'Enter an email' : null,
                                 onChanged: (val) {
                                   setState(() => email = val);
                                 },
@@ -67,6 +72,7 @@ class _RegisterState extends State<Register> {
                                 height: 50.0,
                               ),
                               TextFormField(
+                                validator: (val) => val.length < 6 ? 'Enter a password(min length 6)' : null,
                                 obscureText: true,
                                 onChanged: (val) {
                                   setState(() => password = val);
@@ -79,8 +85,12 @@ class _RegisterState extends State<Register> {
                                 width: 200.0,
                                 child: RaisedButton(
                                   onPressed: () async {
-                                    print(email);
-                                    print(password);
+                                    if(_formKey.currentState.validate()){
+                                      dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                                      if(result == null) {
+                                        setState(() => error = 'please supply a valid');
+                                      }
+                                    }
                                   },
                                   color: Colors.amber[600],
                                   shape: RoundedRectangleBorder(
@@ -94,6 +104,11 @@ class _RegisterState extends State<Register> {
                                         fontSize: 20.0),
                                   ),
                                 ),
+                              ),
+                              SizedBox(height: 12.0,),
+                              Text(
+                                error,
+                                style: TextStyle(color: Colors.red, fontSize: 14.0),
                               ),
                             ],
                           ),
