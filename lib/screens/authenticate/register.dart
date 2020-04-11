@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/shared/constants.dart';
-import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
+import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
+import 'package:lco_workout/shared/loading.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -15,6 +16,7 @@ class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field state
   String email = '';
@@ -23,7 +25,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.grey[300],
       body: CustomScrollView(
         slivers: <Widget>[
@@ -51,15 +53,16 @@ class _RegisterState extends State<Register> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 45),
                   child: Form(
+                    autovalidate: true,
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 40.0,
+                          height: 80.0,
                         ),
                         TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Enter your email'),
-                          validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                          decoration: textInputDecoration.copyWith(labelText: 'Enter your email'),
+                          validator: (val) => val.isEmpty ? 'Enter an email!' : null,
                           onChanged: (val) {
                             setState(() => email = val);
                           },
@@ -68,24 +71,28 @@ class _RegisterState extends State<Register> {
                           height: 30.0,
                         ),
                         TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Enter your password'),
-                          validator: (val) => val.length < 6 ? 'Enter a password(min length 6)' : null,
+                          decoration: textInputDecoration.copyWith(labelText: 'Enter your password', helperText: 'This has to be over 6 characters in length'),
+                          validator: (val) => val.length < 6 ? 'Password must have more than six characters!' : null,
                           obscureText: true,
                           onChanged: (val) {
                             setState(() => password = val);
                           },
                         ),
                         SizedBox(
-                          height: 80.0,
+                          height: 90.0,
                         ),
                         SizedBox(
                           width: 200.0,
                           child: RaisedButton(
                             onPressed: () async {
                               if(_formKey.currentState.validate()){
+                                setState(() => loading = true);
                                 dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                                 if(result == null) {
-                                  setState(() => error = 'please supply a valid');
+                                  setState(() {
+                                    error = 'please supply a valid';
+                                    loading = false;
+                                  });
                                 }
                               }
                             },

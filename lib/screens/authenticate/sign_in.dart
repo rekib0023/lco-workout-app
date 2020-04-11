@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/shared/constants.dart';
-import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
+import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
+import 'package:lco_workout/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -15,17 +16,16 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-
+  bool loading = false;
 
   // text field state
   String email = '';
   String password = '';
   String error = '';
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.grey[300],
       body: CustomScrollView(
         slivers: <Widget>[
@@ -57,20 +57,20 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 40.0,
+                          height: 80.0,
                         ),
                         TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Enter your email'),
+                          decoration: textInputDecoration.copyWith(labelText: 'Enter your email'),
                           validator: (val) => val.isEmpty ? 'Enter your email' : null,
                           onChanged: (val) {
                             setState(() => email = val);
                           },
                         ),
                         SizedBox(
-                          height: 30.0,
+                          height: 35.0,
                         ),
                         TextFormField(
-                          decoration: textInputDecoration.copyWith(hintText: 'Enter your password'),
+                          decoration: textInputDecoration.copyWith(labelText: 'Enter your password'),
                           validator: (val) => val.length < 6 ? 'Enter the password' : null,
                           obscureText: true,
                           onChanged: (val) {
@@ -78,16 +78,20 @@ class _SignInState extends State<SignIn> {
                           },
                         ),
                         SizedBox(
-                          height: 80.0,
+                          height: 90.0,
                         ),
                         SizedBox(
                           width: 200.0,
                           child: RaisedButton(
                             onPressed: () async {
                               if(_formKey.currentState.validate()){
+                                setState(() => loading = true);
                                 dynamic result = await _auth.signinWithEmailAndPassword(email, password);
                                 if(result == null) {
-                                  setState(() => error = 'please supply a valid');
+                                  setState(() {
+                                    error = 'please supply a valid';
+                                    loading = false;
+                                  });
                                 }
                               }
                             },

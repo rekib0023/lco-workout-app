@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lco_workout/screens/home/register.dart';
-import 'package:lco_workout/screens/home/sign_in.dart';
+import 'package:lco_workout/screens/authenticate/sign_in.dart';
+import 'package:lco_workout/screens/authenticate/register.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -10,6 +10,8 @@ class Authenticate extends StatefulWidget {
 class _AuthenticateState extends State<Authenticate> {
 
   bool showSignIn = true;
+  // _AuthenticateState({ this.showSignIn });
+
   void toggleView() {
     setState(() => showSignIn = !showSignIn);
   }

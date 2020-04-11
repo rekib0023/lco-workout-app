@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
-import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
+import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
 
 class Home extends StatelessWidget {
 

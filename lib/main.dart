@@ -25,6 +25,10 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         // debugShowCheckedModeBanner: false,s
+        // routes: {
+        //   '/signin': (context) => SignIn(),
+        //   '/register': (context) => Register(),
+        // },
         home: Wrapper(),
       ),
     );
