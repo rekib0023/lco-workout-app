@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "210109188450",
+    "firebase_url": "https://lco-workout-app.firebaseio.com",
+    "project_id": "lco-workout-app",
+    "storage_bucket": "lco-workout-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210109188450:android:641ac504b1907a1048843b",
+        "android_client_info": {
+          "package_name": "com.radevs.lco_workout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210109188450-4fpc359rill1b8qluv5gcebjsv6jq1it.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm3HyrzYU6kAu3TecDaYqoWly4QoakL9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210109188450-4fpc359rill1b8qluv5gcebjsv6jq1it.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

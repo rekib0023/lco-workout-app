@@ -6,7 +6,7 @@ import 'package:lco_workout/pages/signup.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
-  initialRoute: '/landing',
+  initialRoute: '/',
   routes: {
     '/': (context) => Loading(),
     '/home': (context) => Home(),
