@@ -23,12 +23,12 @@ class MyFlexibleAppBar extends StatelessWidget {
       ),
       elevation: 1,
       pinned: true,
-      expandedHeight: 220.0,
+      expandedHeight: 240.0,
       iconTheme: IconThemeData(color: Colors.white),
       actions: action,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: const EdgeInsets.fromLTRB(18,0,0,20),
+          padding: const EdgeInsets.fromLTRB(24,0,0,20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,

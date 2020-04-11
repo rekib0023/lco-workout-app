@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
+
   final AuthService _auth = AuthService();
 
   // text field state
@@ -21,7 +22,7 @@ class _SignInState extends State<SignIn> {
       body: CustomScrollView(
         slivers: <Widget>[
           MyFlexibleAppBar(
-            mText: 'Sign In',
+            mText: 'Sign Up',
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -68,7 +69,7 @@ class _SignInState extends State<SignIn> {
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 child: Text(
-                                  'Sign In',
+                                  'Register',
                                   style: TextStyle(
                                       color: Colors.grey[900],
                                       fontWeight: FontWeight.bold,

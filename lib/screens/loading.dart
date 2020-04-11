@@ -25,22 +25,22 @@ class _LoadingState extends State<Loading> {
             SizedBox(
               width: 200,
               child: RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              padding: EdgeInsets.fromLTRB(60, 5, 60, 5),
-              color: Colors.amber[600],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  color: Colors.grey[900],
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0
-                  ),
-              ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                padding: EdgeInsets.fromLTRB(60, 5, 60, 5),
+                color: Colors.amber[600],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.grey[900],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0
+                    ),
+                ),
             ),
             ),
             SizedBox(
