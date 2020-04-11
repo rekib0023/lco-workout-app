@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
+import 'package:lco_workout/shared/constants.dart';
 import 'package:lco_workout/utils/MyFlexibleAppBar.dart';
 
 class SignIn extends StatefulWidget {
@@ -59,6 +60,7 @@ class _SignInState extends State<SignIn> {
                           height: 40.0,
                         ),
                         TextFormField(
+                          decoration: textInputDecoration.copyWith(hintText: 'Enter your email'),
                           validator: (val) => val.isEmpty ? 'Enter your email' : null,
                           onChanged: (val) {
                             setState(() => email = val);
@@ -68,6 +70,7 @@ class _SignInState extends State<SignIn> {
                           height: 30.0,
                         ),
                         TextFormField(
+                          decoration: textInputDecoration.copyWith(hintText: 'Enter your password'),
                           validator: (val) => val.length < 6 ? 'Enter the password' : null,
                           obscureText: true,
                           onChanged: (val) {
