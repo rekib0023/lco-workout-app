@@ -11,11 +11,16 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+
 
   // text field state
   String email = '';
   String password = '';
+  String error = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,61 +50,64 @@ class _SignInState extends State<SignIn> {
             delegate: SliverChildListDelegate(
               <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Flex(
-                    direction: Axis.vertical,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20.0, horizontal: 30.0),
-                        child: Form(
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 60.0,
-                              ),
-                              TextFormField(
-                                onChanged: (val) {
-                                  setState(() => email = val);
-                                },
-                              ),
-                              SizedBox(
-                                height: 50.0,
-                              ),
-                              TextFormField(
-                                obscureText: true,
-                                onChanged: (val) {
-                                  setState(() => password = val);
-                                },
-                              ),
-                              SizedBox(
-                                height: 140.0,
-                              ),
-                              SizedBox(
-                                width: 200.0,
-                                child: RaisedButton(
-                                  onPressed: () async {
-                                    print(email);
-                                    print(password);
-                                  },
-                                  color: Colors.amber[600],
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Text(
-                                    'Sign In',
-                                    style: TextStyle(
-                                        color: Colors.grey[900],
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0),
-                                  ),
-                                ),
-                              ),
-                            ],
+                  padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 45),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 40.0,
+                        ),
+                        TextFormField(
+                          validator: (val) => val.isEmpty ? 'Enter your email' : null,
+                          onChanged: (val) {
+                            setState(() => email = val);
+                          },
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          validator: (val) => val.length < 6 ? 'Enter the password' : null,
+                          obscureText: true,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          },
+                        ),
+                        SizedBox(
+                          height: 80.0,
+                        ),
+                        SizedBox(
+                          width: 200.0,
+                          child: RaisedButton(
+                            onPressed: () async {
+                              if(_formKey.currentState.validate()){
+                                dynamic result = await _auth.signinWithEmailAndPassword(email, password);
+                                if(result == null) {
+                                  setState(() => error = 'please supply a valid');
+                                }
+                              }
+                            },
+                            color: Colors.amber[600],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Text(
+                              'Sign In',
+                              style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 12.0,),
+                        Text(
+                          error,
+                          style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
