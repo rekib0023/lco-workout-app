@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 
-final TextStyle mainTitleTextStyle = TextStyle(
-  fontSize: 70,
-  fontWeight: FontWeight.w800,
-  letterSpacing: 3,
-  color: Colors.amber[600],
-);
+final Color primaryColor = Color(0xFF8e44ad);
+final Color accentColor = Color(0xFF2c3e50);
+final Color scaffoldBackgroundColor = Color(0xFFecf0f1);
 
 final TextStyle mainHeadingTextStyle = TextStyle(
-  fontSize: 50,
-  fontWeight: FontWeight.w500,
-  letterSpacing: 3,
-  color: Colors.amber[600],
+  color: accentColor,
+  fontWeight: FontWeight.bold,
+  fontSize: 35.0,
+  letterSpacing: 1.0
 );
 
-final TextStyle subHeadingTextStyle = TextStyle(
-  fontSize: 24.0,
-  fontWeight: FontWeight.w300,
-  letterSpacing: 3,
-  color: Colors.grey[100]
+final TextStyle fadedTextStyle = TextStyle(
+  color: accentColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 14.0,
+  letterSpacing: 0.5,
 );
 
-final TextStyle roundedAccentButtonTextStyle = TextStyle(
-    color: Colors.grey[900], fontWeight: FontWeight.bold, fontSize: 20.0);
-
-final TextStyle semiRoundedActionBtnStyle = TextStyle(
-  color: Colors.grey[100], fontWeight: FontWeight.w600, fontSize: 22.0, letterSpacing: 2.0
+final TextStyle roundedButtonTextStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 20.0,
+  letterSpacing: 2.0,
 );

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
-import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
-import 'package:lco_workout/utils/styleguide.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -14,22 +12,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: CustomScrollView(
-        slivers: <Widget>[
-          MyFlexibleAppBar(
-            mainHeading: '',
-            mainStyle: mainHeadingTextStyle,
-            subHeading: 'Here are the 5 workouts I chosed for you..!',
-            containsBtn: true,
-            btnText: 'Let\'s get started!',
-            onPressedHome: () {
-              // TODO start workout
-              print('hi');
-            },
-            subStyle: subHeadingTextStyle,
-            actions: <Widget>[
-              PopupMenuButton<String>(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        leading: Icon(Icons.arrow_back),
+        actions: <Widget>[
+          PopupMenuButton<String>(
                 onSelected: choiceAction,
                 itemBuilder: (BuildContext context) {
                   return choices.map((String choice) {
@@ -38,18 +25,8 @@ class Home extends StatelessWidget {
                       child: Text(choice),
                     );
                   }).toList();
-                },
-              ),
-            ],
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(<Widget>[
-              Text(
-                'ss',
-                style: mainTitleTextStyle,
-              ),
-            ]),
-          ),
+                }
+          )
         ],
       ),
     );

@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.grey[900],
-          accentColor: Colors.amber[600],
-          scaffoldBackgroundColor: Colors.grey[300],
+          primaryColor: Color(0xFF8e44ad),
+          accentColor: Color(0xFF2c3e50),
+          scaffoldBackgroundColor: Color(0xFFecf0f1),
         ),
         home: Wrapper(),
       ),
