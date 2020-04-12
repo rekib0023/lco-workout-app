@@ -38,6 +38,7 @@ class _SignInState extends State<SignIn> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
+                      SizedBox(height: 2),
                       SizedBox(
                         child: Text(
                           'SIGN IN',
@@ -78,7 +79,8 @@ class _SignInState extends State<SignIn> {
                               style: fadedTextStyle,
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: 'SIGN UP',
+                                  text: ' SIGN UP',
+                                  style: linkTextStyle,
                                 )
                               ],
                             ),

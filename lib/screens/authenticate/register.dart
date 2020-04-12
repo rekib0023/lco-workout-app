@@ -39,6 +39,7 @@ class _RegisterState extends State<Register> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
+                      SizedBox(height: 2),
                       SizedBox(
                         child: Text(
                           'SIGN UP',
@@ -82,7 +83,8 @@ class _RegisterState extends State<Register> {
                               style: fadedTextStyle,
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: 'SIGN IN',
+                                  text: ' SIGN IN',
+                                  style: linkTextStyle,
                                 )
                               ],
                             ),

@@ -8,7 +8,7 @@ class Loading extends StatelessWidget {
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Center(
         child: SpinKitFadingCircle(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).accentColor,
           size: 100.0,
         ),
       ),

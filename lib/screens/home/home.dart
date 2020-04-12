@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/services/auth.dart';
+import 'package:lco_workout/utils/styleguide.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
 
-  // action options
   static const String Logout = 'Logout';
   static const String About = 'About';
   static const List<String> choices = [Logout, About];
@@ -13,28 +18,63 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
-        actions: <Widget>[
-          PopupMenuButton<String>(
-                onSelected: choiceAction,
-                itemBuilder: (BuildContext context) {
-                  return choices.map((String choice) {
-                    return PopupMenuItem<String>(
-                      value: choice,
-                      child: Text(choice),
-                    );
-                  }).toList();
-                }
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              leading: Icon(Icons.menu),
+              iconTheme: IconThemeData(color: Theme.of(context).accentColor),
+              centerTitle: true,
+              backgroundColor: Theme.of(context).primaryColorLight,
+              expandedHeight: MediaQuery.of(context).size.height * .13,
+              actions: <Widget>[
+                FlatButton.icon(
+                  onPressed: () async {
+                    await _auth.signout();
+                  },
+                  icon: Icon(Icons.person),
+                  label: Text('Logout'),
+                ),
+              ],
+              flexibleSpace: FlexibleSpaceBar(
+                background: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(height: 10.0),
+                    Text(
+                      'LCO',
+                      style: appBarTextStyle,
+                    ),
+                    Text(
+                      'Home Workout',
+                      style: appBarSubTextStyle,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            title: Text('Profile'),
           )
         ],
       ),
     );
   }
 
-  void choiceAction(String choice) async {
-    if (choice == Logout) {
-      await _auth.signout();
-    }
-  }
+  // void choiceAction(String choice) async {
+  //   if (choice == Home.Logout) {
+  //     await _auth.signout();
+  //   }
+  // }
 }
