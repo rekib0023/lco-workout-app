@@ -23,3 +23,24 @@ class RoundedAccentButtons extends StatelessWidget {
     );
   }
 }
+
+class SemiRoundedActionBtn extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+
+  const SemiRoundedActionBtn({Key key, this.text, this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          text,
+          style: semiRoundedActionBtnStyle,
+        ),
+      ),
+    );
+  }
+}

@@ -4,6 +4,7 @@ import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
 import 'package:lco_workout/shared/loading.dart';
 import 'package:lco_workout/shared/my_custom_buttons.dart';
 import 'package:lco_workout/shared/my_custom_formFields.dart';
+import 'package:lco_workout/utils/styleguide.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -23,6 +24,11 @@ class _RegisterState extends State<Register> {
   String password = '';
   String error = '';
 
+  // action options
+  static const String SignIn = 'Sign In';
+  static const String About = 'About';
+  static const List<String> choices = [SignIn, About];
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -32,20 +38,21 @@ class _RegisterState extends State<Register> {
             body: CustomScrollView(
               slivers: <Widget>[
                 MyFlexibleAppBar(
-                  mText: 'Register',
-                  action: <Widget>[
-                    FlatButton.icon(
-                      onPressed: () {
-                        widget.toggleView();
+                  mainHeading: 'Register',
+                  subHeading: '',
+                  containsBtn: false,
+                  mainStyle: mainTitleTextStyle,
+                  actions: <Widget>[
+                    PopupMenuButton<String>(
+                      onSelected: choiceAction,
+                      itemBuilder: (BuildContext context) {
+                        return choices.map((String choice) {
+                          return PopupMenuItem<String>(
+                            value: choice,
+                            child: Text(choice),
+                          );
+                        }).toList();
                       },
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        'Sign In',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
                   ],
                 ),
@@ -66,7 +73,7 @@ class _RegisterState extends State<Register> {
                                   setState(() => email = val);
                                 },
                               ),
-                              SizedBox(height: 30.0),
+                              SizedBox(height: 35.0),
                               PasswordFormField(
                                 onChanged: (val) {
                                   setState(() => password = val);
@@ -107,4 +114,14 @@ class _RegisterState extends State<Register> {
             ),
           );
   }
+
+  void choiceAction(String choice) {
+    if(choice == SignIn){
+      widget.toggleView();
+    }
+    if(choice == About){
+      // TODO create about page
+    }
+  }
+
 }

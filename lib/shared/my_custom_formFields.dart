@@ -25,7 +25,7 @@ class PasswordFormField extends StatelessWidget {
 class EmailFormField extends StatelessWidget {
   final Function onChanged;
 
-  const EmailFormField({Key key, @re this.onChanged}) : super(key: key);
+  const EmailFormField({Key key, @required this.onChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

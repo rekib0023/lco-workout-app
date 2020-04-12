@@ -4,6 +4,7 @@ import 'package:lco_workout/shared/MyFlexibleAppBar.dart';
 import 'package:lco_workout/shared/loading.dart';
 import 'package:lco_workout/shared/my_custom_buttons.dart';
 import 'package:lco_workout/shared/my_custom_formFields.dart';
+import 'package:lco_workout/utils/styleguide.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -23,6 +24,11 @@ class _SignInState extends State<SignIn> {
   String password = '';
   String error = '';
 
+  // action options
+  static const String Register = 'Register';
+  static const String About = 'About';
+  static const List<String> choices = [Register, About];
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -32,20 +38,21 @@ class _SignInState extends State<SignIn> {
             body: CustomScrollView(
               slivers: <Widget>[
                 MyFlexibleAppBar(
-                  mText: 'Sign In',
-                  action: <Widget>[
-                    FlatButton.icon(
-                      onPressed: () {
-                        widget.toggleView();
+                  mainHeading: 'Sign In',
+                  containsBtn: false,
+                  subHeading: '',
+                  mainStyle: mainTitleTextStyle,
+                  actions: <Widget>[
+                    PopupMenuButton<String>(
+                      onSelected: choiceAction,
+                      itemBuilder: (BuildContext context) {
+                        return choices.map((String choice) {
+                          return PopupMenuItem<String>(
+                            value: choice,
+                            child: Text(choice),
+                          );
+                        }).toList();
                       },
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
                   ],
                 ),
@@ -73,7 +80,7 @@ class _SignInState extends State<SignIn> {
                               ),
                               SizedBox(height: 90.0),
                               RoundedAccentButtons(
-                                text: 'SignIn',
+                                text: 'Sign In',
                                 onPressed: () async {
                                   if (_formKey.currentState.validate()) {
                                     setState(() => loading = true);
@@ -105,5 +112,14 @@ class _SignInState extends State<SignIn> {
               ],
             ),
           );
+  }
+
+  void choiceAction(String choice) {
+    if(choice == Register){
+      widget.toggleView();
+    }
+    if(choice == About){
+      // TODO create about page
+    }
   }
 }
