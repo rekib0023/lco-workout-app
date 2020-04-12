@@ -4,12 +4,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('oi');
     return Container(
-      color: Colors.grey[900],
+      color: Theme.of(context).primaryColor,
       child: Center(
         child: SpinKitFadingCircle(
-          color: Colors.amber[600],
+          color: Theme.of(context).accentColor,
           size: 100.0,
         ),
       ),

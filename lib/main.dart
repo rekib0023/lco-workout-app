@@ -4,18 +4,6 @@ import 'package:lco_workout/screens/wrapper.dart';
 import 'package:lco_workout/services/auth.dart';
 import 'package:provider/provider.dart';
 
-// void main() => runApp(MaterialApp(
-//   debugShowCheckedModeBanner: false,
-//   // initialRoute: '/',
-//   // routes: {
-//   //   '/': (context) => Loading(),
-//   //   '/home': (context) => Home(),
-//   //   '/login': (context) => Login(),
-//   //   '/signup': (context) => Signup(),
-//   // },
-
-// ));
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -24,11 +12,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
-        // debugShowCheckedModeBanner: false,s
-        // routes: {
-        //   '/signin': (context) => SignIn(),
-        //   '/register': (context) => Register(),
-        // },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.grey[900],
+          accentColor: Colors.amber[600],
+          scaffoldBackgroundColor: Colors.grey[300],
+        ),
         home: Wrapper(),
       ),
     );
