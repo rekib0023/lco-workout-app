@@ -13,10 +13,10 @@ class _ProfileDetailsState extends State<ProfileDetails> {
   Widget build(BuildContext context) {
     final user = Provider.of<List<UserDetails>>(context);
     
-    user.forEach((details) {
-      print(details.username);
-      print(details.email);
-    });
+    // user.forEach((details) {
+    //   print(details.username);
+    //   print(details.email);
+    // });
 
     // for(var details in user.documents) {
     //   print(details.data);

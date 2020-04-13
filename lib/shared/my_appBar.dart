@@ -4,11 +4,11 @@ import 'package:lco_workout/utils/styleguide.dart';
 import 'package:lco_workout/services/auth.dart';
 
 class MyAppBar extends StatelessWidget {
-  // final AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
   final String title;
 
-  const MyAppBar({Key key, this.title}) : super(key: key);
+  MyAppBar({Key key, this.title}) : super(key: key);
 
   // const MyAppBar({Key key, this.title}) : super(key: key);
 
@@ -20,15 +20,15 @@ class MyAppBar extends StatelessWidget {
       centerTitle: true,
       backgroundColor: Theme.of(context).primaryColorLight,
       expandedHeight: MediaQuery.of(context).size.height * .10,
-      // actions: <Widget>[
-      //   FlatButton.icon(
-      //     onPressed: () async {
-      //       await _auth.signout();
-      //     },
-      //     icon: Icon(FontAwesomeIcons.user),
-      //     label: Text('Logout'),
-      //   ),
-      // ],
+      actions: <Widget>[
+        FlatButton.icon(
+          onPressed: () async {
+            await _auth.signout();
+          },
+          icon: Icon(FontAwesomeIcons.user),
+          label: Text('Logout'),
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         // ),
         title: Text(

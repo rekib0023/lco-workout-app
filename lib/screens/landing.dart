@@ -26,7 +26,7 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset('assets/logo.png'),
+          Image.asset('assets/images/logo.png'),
           spinkit,
         ],
       ),

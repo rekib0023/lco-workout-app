@@ -20,26 +20,27 @@ class _HomePageState extends State<HomePage> {
             MyAppBar(
               title: 'Home',
             ),
-            SliverList(
-              //             child: FlatButton.icon(
-              //   onPressed: () async {
-              //     await _auth.signout();
-              //   },
-              //   icon: Icon(FontAwesomeIcons.user),
-              //   label: Text('Logout'),
-              // ),
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  FlatButton.icon(
-                    onPressed: () async {
-                      await _auth.signout();
-                    },
-                    icon: Icon(FontAwesomeIcons.user),
-                    label: Text('Logout'),
-                  ),
-                ],
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 1,
               ),
-            )
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Colors.teal[100 * (index % 9)],
+                      child: Text('grid item $index'),
+                    ),
+                  );
+                },
+                childCount: 20,
+              ),
+            ),
           ],
         ),
       ),
