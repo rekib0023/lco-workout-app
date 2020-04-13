@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/utils/styleguide.dart';
 
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
-              leading: Icon(Icons.menu),
+              leading: Icon(FontAwesomeIcons.bars),
               iconTheme: IconThemeData(color: Theme.of(context).accentColor),
               centerTitle: true,
               backgroundColor: Theme.of(context).primaryColorLight,
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     await _auth.signout();
                   },
-                  icon: Icon(Icons.person),
+                  icon: Icon(FontAwesomeIcons.user),
                   label: Text('Logout'),
                 ),
               ],
@@ -60,11 +61,15 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(FontAwesomeIcons.home),
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(FontAwesomeIcons.dumbbell),
+            title: Text('Workouts'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.user),
             title: Text('Profile'),
           )
         ],
