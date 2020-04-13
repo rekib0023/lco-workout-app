@@ -27,69 +27,67 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return loading
         ? Loading()
-        : SafeArea(
-            child: Scaffold(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              body: Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      SizedBox(height: 2),
-                      SizedBox(
-                        child: Text(
-                          'SIGN IN',
-                          style: mainHeadingTextStyle,
-                        ),
+        : Scaffold(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            body: Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    SizedBox(height: 2),
+                    SizedBox(
+                      child: Text(
+                        'SIGN IN',
+                        style: mainHeadingTextStyle,
                       ),
-                      EmailFormField(
-                        onChanged: (val) => setState(() => email = val),
-                      ),
-                      PasswordFormField(
-                        onChanged: (val) => setState(() => password = val),
-                      ),
-                      RoundedActionBtn(
-                        text: 'SIGN IN',
-                        onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            setState(() => loading = true);
-                            dynamic result = await _auth
-                                .signinWithEmailAndPassword(email, password);
-                            if (result == null) {
-                              setState(() {
-                                error = 'please supply a valid';
-                                loading = false;
-                              });
-                            }
+                    ),
+                    EmailFormField(
+                      onChanged: (val) => setState(() => email = val),
+                    ),
+                    PasswordFormField(
+                      onChanged: (val) => setState(() => password = val),
+                    ),
+                    RoundedActionBtn(
+                      text: 'SIGN IN',
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          setState(() => loading = true);
+                          dynamic result = await _auth
+                              .signinWithEmailAndPassword(email, password);
+                          if (result == null) {
+                            setState(() {
+                              error = 'please supply a valid';
+                              loading = false;
+                            });
                           }
-                        },
-                      ),
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
-                      SizedBox(
-                        child: GestureDetector(
-                          child: RichText(
-                            text: TextSpan(
-                              text: 'Don\'t have an account?',
-                              style: fadedTextStyle,
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: ' SIGN UP',
-                                  style: linkTextStyle,
-                                )
-                              ],
-                            ),
+                        }
+                      },
+                    ),
+                    Text(
+                      error,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
+                    SizedBox(
+                      child: GestureDetector(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Don\'t have an account?',
+                            style: fadedTextStyle,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: ' SIGN UP',
+                                style: linkTextStyle,
+                              )
+                            ],
                           ),
-                          onTap: widget.toggleView,
                         ),
+                        onTap: widget.toggleView,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

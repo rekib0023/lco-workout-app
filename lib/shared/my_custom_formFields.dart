@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lco_workout/utils/text_input_guides.dart';
 
 class UserFormField extends StatelessWidget {
-
   final Function onChanged;
 
   const UserFormField({Key key, this.onChanged}) : super(key: key);
@@ -16,7 +15,6 @@ class UserFormField extends StatelessWidget {
     );
   }
 }
-
 
 class EmailFormField extends StatelessWidget {
   final Function onChanged;
@@ -34,7 +32,6 @@ class EmailFormField extends StatelessWidget {
 }
 
 class PasswordFormField extends StatelessWidget {
-
   final Function onChanged;
   const PasswordFormField({Key key, @required this.onChanged})
       : super(key: key);

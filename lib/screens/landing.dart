@@ -8,7 +8,7 @@ class Landing extends StatefulWidget {
   _LandingState createState() => _LandingState();
 }
 
-class _LandingState extends State<Landing>  with TickerProviderStateMixin{
+class _LandingState extends State<Landing> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // final user = Provider.of<User>(context);

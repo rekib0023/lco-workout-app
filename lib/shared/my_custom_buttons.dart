@@ -18,7 +18,10 @@ class RoundedActionBtn extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
-        child: Text(text, style: roundedButtonTextStyle,),
+        child: Text(
+          text,
+          style: roundedButtonTextStyle,
+        ),
       ),
     );
   }
