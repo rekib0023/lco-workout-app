@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lco_workout/screens/profile/profile.dart';
-import 'package:lco_workout/screens/workouts/workouts.dart';
 import 'package:lco_workout/shared/my_appBar.dart';
 
-class HomePage extends StatefulWidget {
+class WorkoutsPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _WorkoutsPageState createState() => _WorkoutsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WorkoutsPageState extends State<WorkoutsPage> {
   @override
   Widget build(BuildContext context) {
+    // CustomScrollView(
+    //     slivers: <Widget>[
+    //       MyAppBar(title: 'Home'),
+    //     ],
+    //   ),
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Workouts'),
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       // body: CustomScrollView(

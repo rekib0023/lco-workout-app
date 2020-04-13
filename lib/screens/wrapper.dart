@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/screens/authenticate/authenticate.dart';
-import 'package:lco_workout/screens/home/home.dart';
+import 'package:lco_workout/screens/homeScreensWrapper.dart';
 import 'package:lco_workout/screens/landing.dart';
 import 'package:provider/provider.dart';
 import 'package:lco_workout/models/user.dart';
@@ -28,6 +28,6 @@ class _WrapperState extends State<Wrapper> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
-    return showLanding ? Landing() : user == null ? Authenticate() : Home();
+    return showLanding ? Landing() : user == null ? Authenticate() : ScreensWrapper();
   }
 }

@@ -16,8 +16,8 @@ final TextStyle mainHeadingTextStyle = TextStyle(
 final TextStyle appBarTextStyle = TextStyle(
   color: darkTextColor,
   fontWeight: FontWeight.bold,
-  fontSize: 45.0,
-  letterSpacing: 4.0,
+  fontSize: 20.0,
+  letterSpacing: 2.0,
 );
 
 final TextStyle appBarSubTextStyle = TextStyle(
