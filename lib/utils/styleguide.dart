@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-final Color primaryColor = Color(0xFF8e44ad);
-final Color accentColor = Color(0xFF2c3e50);
-final Color scaffoldBackgroundColor = Color(0xFFecf0f1);
-final Color primaryTextColor = Color(0xFF8e44ad);
-final Color lightTextColor = Color(0xFFecf0f1);
+// final Color scaffoldBackgroundColor = Color(0xFFecf0f1);
+final Color primaryTextColor = Color(0xFFf39c12);
+// final Color secondaryTextColor = Color(0xFFf1c40f);
 final Color darkTextColor = Color(0xFF2c3e50);
 
 final TextStyle mainHeadingTextStyle = TextStyle(
-    color: accentColor,
+    color: darkTextColor,
     fontWeight: FontWeight.bold,
     fontSize: 35.0,
     letterSpacing: 1.0);
@@ -17,7 +15,7 @@ final TextStyle appBarTextStyle = TextStyle(
   color: darkTextColor,
   fontWeight: FontWeight.bold,
   fontSize: 20.0,
-  letterSpacing: 2.0,
+  letterSpacing: 1.0,
 );
 
 final TextStyle appBarSubTextStyle = TextStyle(
@@ -27,8 +25,13 @@ final TextStyle appBarSubTextStyle = TextStyle(
   letterSpacing: 2.0,
 );
 
+final TextStyle navBarTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  letterSpacing: 1.0,
+);
+
 final TextStyle fadedTextStyle = TextStyle(
-  color: accentColor,
+  color: darkTextColor,
   fontWeight: FontWeight.w600,
   fontSize: 14.0,
   letterSpacing: 0.5,
