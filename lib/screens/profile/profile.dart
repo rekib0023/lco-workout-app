@@ -9,21 +9,17 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    // return CustomScrollView(
-    //   slivers: <Widget>[
-    //     MyAppBar(title: 'Profile'),
-    //   ],
-    // );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            MyAppBar(
+              title: 'Profile',
+            )
+          ],
+        ),
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      // body: CustomScrollView(
-      //   slivers: <Widget>[
-      //     MyAppBar(title: 'HomePage'),
-      //   ],
-      // ),
     );
   }
 }

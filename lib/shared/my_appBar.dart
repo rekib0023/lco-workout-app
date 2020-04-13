@@ -14,35 +14,31 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          // leading: Icon(FontAwesomeIcons.bars),
-          iconTheme: IconThemeData(color: Theme.of(context).accentColor),
-          centerTitle: true,
-          backgroundColor: Theme.of(context).primaryColorLight,
-          expandedHeight: MediaQuery.of(context).size.height * .10,
-          // actions: <Widget>[
-          //   FlatButton.icon(
-          //     onPressed: () async {
-          //       await _auth.signout();
-          //     },
-          //     icon: Icon(FontAwesomeIcons.user),
-          //     label: Text('Logout'),
-          //   ),
-          // ],
-          flexibleSpace: FlexibleSpaceBar(
-            // ),
-            title: Text(
-              title,
-              style: appBarTextStyle,
-            ),
-            centerTitle: true,
-            titlePadding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * .10 * .30),
-          ),
+    return SliverAppBar(
+      // leading: Icon(FontAwesomeIcons.bars),
+      iconTheme: IconThemeData(color: Theme.of(context).accentColor),
+      centerTitle: true,
+      backgroundColor: Theme.of(context).primaryColorLight,
+      expandedHeight: MediaQuery.of(context).size.height * .10,
+      // actions: <Widget>[
+      //   FlatButton.icon(
+      //     onPressed: () async {
+      //       await _auth.signout();
+      //     },
+      //     icon: Icon(FontAwesomeIcons.user),
+      //     label: Text('Logout'),
+      //   ),
+      // ],
+      flexibleSpace: FlexibleSpaceBar(
+        // ),
+        title: Text(
+          title,
+          style: appBarTextStyle,
         ),
-      ],
+        centerTitle: true,
+        titlePadding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height * .10 * .30),
+      ),
     );
   }
 }

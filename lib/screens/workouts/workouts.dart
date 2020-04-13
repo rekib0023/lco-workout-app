@@ -9,21 +9,17 @@ class WorkoutsPage extends StatefulWidget {
 class _WorkoutsPageState extends State<WorkoutsPage> {
   @override
   Widget build(BuildContext context) {
-    // CustomScrollView(
-    //     slivers: <Widget>[
-    //       MyAppBar(title: 'Home'),
-    //     ],
-    //   ),
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Workouts'),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            MyAppBar(
+              title: 'Workouts',
+            )
+          ],
+        ),
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      // body: CustomScrollView(
-      //   slivers: <Widget>[
-      //     MyAppBar(title: 'HomePage'),
-      //   ],
       // ),
     );
   }
