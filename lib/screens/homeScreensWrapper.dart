@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lco_workout/screens/home/home.dart';
 import 'package:lco_workout/screens/profile/profile.dart';
 import 'package:lco_workout/screens/workouts/workouts.dart';
+import 'package:lco_workout/shared/my_drawer.dart';
 import 'package:lco_workout/utils/styleguide.dart';
 
 class ScreensWrapper extends StatefulWidget {
@@ -30,6 +31,13 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(_screensName[_currentIndex], style: appBarTextStyle,),
+      //   backgroundColor: Colors.white,
+      //   centerTitle: true,
+      //   elevation: 0,
+      // ),
+      drawer: MyDrawer(),
       body: _navPages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
