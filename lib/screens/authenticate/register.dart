@@ -56,6 +56,7 @@ class _RegisterState extends State<Register> {
                     ),
                     RoundedActionBtn(
                       text: 'SIGN UP',
+                      size: MediaQuery.of(context).size.width * 0.73,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
