@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 // final Color scaffoldBackgroundColor = Color(0xFFecf0f1);
-final Color primaryTextColor = Color(0xFFf39c12);
+final Color primaryTextColor = Color(0xFF8e44ad);
 // final Color secondaryTextColor = Color(0xFFf1c40f);
 final Color darkTextColor = Color(0xFF2c3e50);
+final Color lightTextColor = Color(0xFFecf0f1);
 
 final TextStyle mainHeadingTextStyle = TextStyle(
     color: darkTextColor,
@@ -12,7 +13,7 @@ final TextStyle mainHeadingTextStyle = TextStyle(
     letterSpacing: 1.0);
 
 final TextStyle appBarTextStyle = TextStyle(
-  color: darkTextColor,
+  color: lightTextColor,
   fontWeight: FontWeight.bold,
   fontSize: 28.0,
   letterSpacing: 1.0,

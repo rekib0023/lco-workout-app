@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lco_workout/screens/home/home.dart';
 import 'package:lco_workout/screens/profile/profile.dart';
 import 'package:lco_workout/screens/workouts/workouts.dart';
-import 'package:lco_workout/shared/my_drawer.dart';
+import 'package:lco_workout/services/auth.dart';
 import 'package:lco_workout/utils/styleguide.dart';
 
 class ScreensWrapper extends StatefulWidget {
@@ -21,23 +21,42 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     HomePage(),
   ];
 
-  final List<String> _screensName = [
-    'Home',
-    'Workout',
-    'Profile',
-    'Home'
+  final List<String> _screensName = ['Home', 'Workout', 'Profile', 'Home'];
+
+  static const String Logout = 'Logout';
+
+  static const List<String> choices = [
+    Logout,
   ];
+
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_screensName[_currentIndex], style: appBarTextStyle,),
-        backgroundColor: Colors.white,
+        title: Text(
+          _screensName[_currentIndex],
+          style: appBarTextStyle,
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
         elevation: 0,
+        // debugging requirs
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context) {
+              return choices.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
-      drawer: MyDrawer(),
       body: _navPages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
@@ -79,5 +98,11 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
         ],
       ),
     );
+  }
+
+  void choiceAction(String choice) async {
+    if (choice == 'Logout') {
+      await _auth.signout();
+    }
   }
 }

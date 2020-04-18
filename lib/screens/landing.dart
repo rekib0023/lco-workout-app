@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:lco_workout/models/user.dart';
-import 'package:provider/provider.dart';
 
 class Landing extends StatefulWidget {
   @override

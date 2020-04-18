@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lco_workout/models/user.dart';
-import 'package:lco_workout/screens/profile/userDetails.dart';
 import 'package:lco_workout/services/database.dart';
 import 'package:provider/provider.dart';
 // import 'package:flutter/services/database.dart';
