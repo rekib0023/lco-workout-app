@@ -10,16 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final workouts = WorkoutDetails().workoutList;
+  final workouts = WorkoutDetails().getWorkouts();
   final double setsNo = sets;
-
-  List imgList = [
-    'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1505764761634-1d77b57e1966?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1545161296-d9c2c241f2ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=634&q=80',
-    'https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,37 +41,50 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.10,
-          ),
-          CarouselSlider(
-            options: CarouselOptions(
-              initialPage: 0,
-              height: 400,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-            ),
-            items: imgList.map(
-              (imgUrl) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Image.network(
-                        imgUrl,
-                        fit: BoxFit.fill,
-                      ),
+          SizedBox(height: 15,),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CarouselSlider(
+                options: CarouselOptions(
+                  initialPage: 0,
+                  height: MediaQuery.of(context).size.height * 0.50,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                ),
+                items: workouts.map(
+                  (workout) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.25,
+                                child: Image.asset(workout['image']),
+                              ),
+                              Text(workout['name']),
+                              Text(workout['duration']),
+                              Text(workout['desc'])
+                            ],
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ).toList(),
+                ).toList(),
+              ),
+            ],
           ),
+          // RaisedButton(onPressed: WorkoutDetails().getWorkouts,),
         ]));
   }
 }
