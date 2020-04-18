@@ -4,14 +4,15 @@ import 'package:lco_workout/utils/styleguide.dart';
 class RoundedActionBtn extends StatelessWidget {
   final String text;
   final Function onPressed;
+  final double size;
 
-  const RoundedActionBtn({Key key, this.text, this.onPressed})
+  const RoundedActionBtn({Key key, this.text, this.onPressed, this.size})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.70,
+      width: size,
       child: RaisedButton(
         onPressed: onPressed,
         color: Theme.of(context).primaryColor,

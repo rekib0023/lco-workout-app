@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lco_workout/screens/workouts/workoutList.dart';
+import 'package:lco_workout/services/auth.dart';
+import 'package:lco_workout/shared/appbars/home_appbar.dart';
+// import 'package:lco_workout/shared/my_appBar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,45 +10,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final workouts = WorkoutDetails().workoutList;
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: GridView.builder(
-          itemCount: workouts.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20.0,
-            mainAxisSpacing: 20.0,
-          ),
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                print(workouts[index]);
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                child: Container(
-                  color: Colors.amberAccent,
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Container(
-                        color: Colors.white,
-                        height: MediaQuery.of(context).size.height * .15,
-                        child: Image.asset(workouts[index]['image']),
-                      ),
-                      Text(workouts[index]['name']),
-                      Text(workouts[index]['desc']),
-                    ],
-                  ),
-                ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            HomeAppBar(),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 1,
               ),
-            );
-          },
-        ));
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Colors.teal[100 * (index % 9)],
+                      child: Text('grid item $index'),
+                    ),
+                  );
+                },
+                childCount: 20,
+              ),
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    );
   }
 }
