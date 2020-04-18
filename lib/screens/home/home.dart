@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lco_workout/services/auth.dart';
+import 'package:lco_workout/shared/appbars/home_appbar.dart';
 import 'package:lco_workout/shared/my_appBar.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,9 +18,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: <Widget>[
-            MyAppBar(
-              title: 'Home',
-            ),
+            HomeAppBar(),
             SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

@@ -20,11 +20,19 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     HomePage(),
   ];
 
+  final List<String> _screensName = [
+    'Home',
+    'Workout',
+    'Profile',
+    'Home'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _navPages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {

@@ -14,15 +14,8 @@ final TextStyle mainHeadingTextStyle = TextStyle(
 final TextStyle appBarTextStyle = TextStyle(
   color: darkTextColor,
   fontWeight: FontWeight.bold,
-  fontSize: 20.0,
+  fontSize: 28.0,
   letterSpacing: 1.0,
-);
-
-final TextStyle appBarSubTextStyle = TextStyle(
-  color: darkTextColor,
-  fontWeight: FontWeight.w400,
-  fontSize: 25.0,
-  letterSpacing: 2.0,
 );
 
 final TextStyle navBarTextStyle = TextStyle(
