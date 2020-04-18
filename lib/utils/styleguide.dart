@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // final Color scaffoldBackgroundColor = Color(0xFFecf0f1);
-final Color primaryTextColor = Color(0xFF8e44ad);
+final Color primaryTextColor = Color(0xFFf39c12);
 // final Color secondaryTextColor = Color(0xFFf1c40f);
 final Color darkTextColor = Color(0xFF2c3e50);
 

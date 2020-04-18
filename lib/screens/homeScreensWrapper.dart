@@ -31,15 +31,12 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-=======
-      // appBar: AppBar(
-      //   title: Text(_screensName[_currentIndex], style: appBarTextStyle,),
-      //   backgroundColor: Colors.white,
-      //   centerTitle: true,
-      //   elevation: 0,
-      // ),
->>>>>>> 11e95e1a2c48e32f99f5444bcb3509a61a5828fd
+      appBar: AppBar(
+        title: Text(_screensName[_currentIndex], style: appBarTextStyle,),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+      ),
       drawer: MyDrawer(),
       body: _navPages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

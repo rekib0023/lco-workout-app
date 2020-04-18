@@ -53,7 +53,6 @@ class _SignInState extends State<SignIn> {
                     RoundedActionBtn(
                       size: MediaQuery.of(context).size.width * 0.73,
                       text: 'SIGN IN',
-                      size: MediaQuery.of(context).size.width * 0.73,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
