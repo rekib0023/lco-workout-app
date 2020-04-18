@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lco_workout/utils/text_input_guides.dart';
 
 class UserFormField extends StatelessWidget {
@@ -47,6 +48,20 @@ class PasswordFormField extends StatelessWidget {
           : null,
       obscureText: true,
       onChanged: onChanged,
+    );
+  }
+}
+
+class NumberOnlyField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        WhitelistingTextInputFormatter.digitsOnly
+      ],
+      decoration: InputDecoration(
+          hintText: 'Set Number',)
     );
   }
 }

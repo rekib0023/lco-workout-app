@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: textScaleFactor
 
 final Color primaryTextColor = Color(0xFF8e44ad);
 final Color darkTextColor = Color(0xFF2c3e50);
@@ -17,6 +18,14 @@ final TextStyle appBarTextStyle = TextStyle(
   fontSize: 28.0,
   letterSpacing: 1.0,
 );
+
+final TextStyle appBarSubHeading = TextStyle(
+  color: lightTextColor,
+  fontWeight: FontWeight.w500,
+  fontSize: 16.0,
+  letterSpacing: 1.0,
+);
+
 
 final TextStyle navBarTextStyle = TextStyle(
   fontWeight: FontWeight.bold,

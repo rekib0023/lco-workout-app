@@ -108,7 +108,6 @@ class WorkoutDetails {
     for(var i=0; i<indices.length; i++){
       randomWorkoutList.add(workoutList[indices[i]]);
     }
-    randomWorkoutList.add(null);
     return randomWorkoutList;
   }
 }

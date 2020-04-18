@@ -14,20 +14,24 @@ class ScreensWrapper extends StatefulWidget {
 class _ScreensWrapperState extends State<ScreensWrapper> {
   int _currentIndex = 0;
 
-  final List<Widget> _navPages = [
+  List<Widget> _navPages = [
     HomePage(),
     WorkoutsPage(),
     ProfilePage(),
     HomePage(),
   ];
 
-  final List<String> _screensName = ['Home', 'Workout', 'Profile', 'Home'];
-
   static const String Logout = 'Logout';
+  static const String DayMode = 'Day mode';
+  static const String RandomMode = 'Random mode';
 
-  static const List<String> choices = [
+  static List<String> choices = [
+    RandomMode,
+    DayMode,
     Logout,
   ];
+
+  final List<String> _screensName = ['Home', 'Workout', 'Profile', 'Home'];
 
   final AuthService _auth = AuthService();
 
@@ -68,7 +72,6 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
         },
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: navBarTextStyle,
-        // selectedItemColor: Color(0xFFf1c40f),
         showUnselectedLabels: false,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -101,8 +104,18 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   }
 
   void choiceAction(String choice) async {
-    if (choice == 'Logout') {
+    if (choice == Logout) {
       await _auth.signout();
+    }
+    else if(choice == DayMode){
+      setState(() {
+        _navPages[0] = WorkoutsPage();
+      });
+    }
+    else if(choice == RandomMode){
+      setState(() {
+        _navPages[0] = HomePage();
+      });
     }
   }
 }
