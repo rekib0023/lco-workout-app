@@ -55,6 +55,7 @@ class _RegisterState extends State<Register> {
                       onChanged: (val) => setState(() => password = val),
                     ),
                     RoundedActionBtn(
+                      size: MediaQuery.of(context).size.width * 0.73,
                       text: 'SIGN UP',
                       size: MediaQuery.of(context).size.width * 0.73,
                       onPressed: () async {

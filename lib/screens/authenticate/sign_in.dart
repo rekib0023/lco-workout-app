@@ -51,6 +51,7 @@ class _SignInState extends State<SignIn> {
                       onChanged: (val) => setState(() => password = val),
                     ),
                     RoundedActionBtn(
+                      size: MediaQuery.of(context).size.width * 0.73,
                       text: 'SIGN IN',
                       size: MediaQuery.of(context).size.width * 0.73,
                       onPressed: () async {
